@@ -28,8 +28,7 @@ inputs:
 
   base_image:
     description: The base image to use for this action
-    default: 'php:8.0-alpine'
-    required: false
+    default: '8.0'
 
   args:
     description: Catch-all for any command-line arguments you would like to add.
@@ -37,7 +36,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: php-${{ inputs.base_image }}/Dockerfile
   args:
     - ${{ inputs.base_image }}
     - ${{ inputs.github_token }}
